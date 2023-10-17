@@ -1,0 +1,35 @@
+{% extends 'baseBack.html.twig' %}
+{% block title %}
+   Statistiques des réservations
+{% endblock %}
+
+{% block body %}
+    <canvas id="reservations" width="400" height="150"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script>
+        let reservations = document.querySelector("#reservations")
+        let recGraph = new Chart(reservations, {
+            type: "bar",
+            data: {
+
+                labels: {{ dates|raw }},
+                datasets: [{
+                    label: "Nombre de reservations",
+                    data: {{ reservationsCount|raw }},
+                    backgroundColor:'#b00707',
+
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        })
+    </script>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="card-body card-block">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+    <div class="row form-group">
+        <div class="col col-md-3">
+            <label for="select" class=" form-control-label">{{ form_label(form.nomMateriel)}} </label>
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.nomMateriel) }}
+            <small class="form-text text-muted">{{ form_errors(form.nomMateriel) }}</small>
+
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col col-md-3">
+            <label for="select" class=" form-control-label">{{ form_label(form.referenceMateriel)}}</label>
+        </div>
+            <div class="col-12 col-md-9">
+            {{ form_widget(form.referenceMateriel) }}
+            <small class="form-text text-muted">{{ form_errors(form.referenceMateriel) }}</small>
+
+            </div>
+         </div>
+    </div>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_materiel_index') }}">Consulter Liste</a></button>
+    </div>
+    {{ form_end(form) }}
+</div>

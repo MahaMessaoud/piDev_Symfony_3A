@@ -1,0 +1,233 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Planning{% endblock %}
+
+{% block body %}
+<!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 text-center pt-70">
+                                <h2>Planning</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+
+        <!--? Date Tabs Start -->
+        <section class="date-tabs section-padding30">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-8">
+                        <div class="section-tittle text-center mb-100">
+                            <span>Notre Planning</span>
+                            <h2>Sélectionnez votre moment de rejoindre maintenant</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- Heading & Nav Button -->
+                <div class="row justify-content-center mb-10">
+                    <div class="col-lg-11">
+                        <div class="properties__button">
+                            <!--Nav Button  -->                                            
+                            <nav>      
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Lundi</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Mardi</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Mercredi</a>
+                                    <a class="nav-item nav-link" id="nav-last-tab" data-toggle="tab" href="#nav-last" role="tab" aria-controls="nav-contact" aria-selected="false">Jeudi</a>
+                                    <a class="nav-item nav-link" id="nav-Sports" data-toggle="tab" href="#nav-nav-Sport" role="tab" aria-controls="nav-contact" aria-selected="false">Vendredi</a>
+                                    <a class="nav-item nav-link" id="nav-six" data-toggle="tab" href="#nav-nav-six" role="tab" aria-controls="nav-contact" aria-selected="false">Samedi</a>
+                                    <a class="nav-item nav-link" id="nav-seven" data-toggle="tab" href="#nav-nav-seven" role="tab" aria-controls="nav-seven" aria-selected="false">Dimanche</a>
+                                </div>
+                            </nav>
+                            <!--End Nav Button  -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab content -->
+                <div class="row justify-content-center">
+                    <div class="col-lg-11">
+                        <!-- Nav Card -->
+                        <div class="tab-content" id="nav-tabContent">
+                            {# Lundi #}
+                            {% for planning in plannings %}
+                            <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Lundi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {# Mardi #}
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Mardi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Mercredi #}
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-home-tab">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Mercredi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Jeudi #}
+                            <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-contact-tab">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Jeudi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Vendredi #}
+                            <div class="tab-pane fade" id="nav-nav-Sport" role="tabpanel" aria-labelledby="nav-last-tab">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Vendredi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Samedi #}
+                            <div class="tab-pane fade" id="nav-nav-six" role="tabpanel" aria-labelledby="nav-Sports">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Samedi" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Dimanche #}
+                            <div class="tab-pane fade" id="nav-nav-seven" role="tabpanel" aria-labelledby="nav-six">       
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="tab-wrapper">
+                                            <!-- single -->
+                                            {% for planning in plannings %}
+                                                {% if planning.jourPlanning == "Dimanche" %}
+                                                    <div class="single-box">
+                                                        <div class="single-caption text-center">
+                                                            <div class="caption">
+                                                                <span>{{planning.heurePlanning}}:00</span>
+                                                                <h3><a href="{{ path('app_cours_crud_show_front', {'id': planning.cours}) }}">{{planning.cours.nomCours}}</a></h3>
+                                                                <p><span>par</span> Coach {{planning.cours.nomCoach}} </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}

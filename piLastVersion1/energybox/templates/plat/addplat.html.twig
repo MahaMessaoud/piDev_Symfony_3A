@@ -1,0 +1,114 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Plat{% endblock %}
+
+{% block body %}
+<div class="card">
+    <div class="card-header">
+        <strong>Ajouter</strong> Plat
+    </div>
+    
+
+ <div class="card-body card-block">
+        {{ form_start(formPlat,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.nom,"Nom du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.nom, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.nom) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.nom) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.prix,"Prix du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.prix, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.prix) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.prix) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.description,"Description du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.description, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.description) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.description) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.calories,"Calories du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.calories, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.calories) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.calories) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.etat,"Etat du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.etat, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.etat) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.etat) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.categories,"Categorie du plat") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.categories, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.categories) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.categories) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.nbp,"NBP du plat:") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.nbp, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.nbp) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.nbp) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formPlat.image ,"Image du plat:") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formPlat.image, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formPlat.image) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formPlat.image) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            {% for message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_ListPlat') }}">Consulter Liste</a></button>
+            </div>
+        {{ form_end(formPlat) }}
+    </div>
+</div>
+
+                                                        
+{% endblock %}

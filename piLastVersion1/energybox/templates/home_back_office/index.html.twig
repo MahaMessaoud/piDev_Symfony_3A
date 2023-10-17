@@ -1,0 +1,42 @@
+   {% extends 'baseBack.html.twig' %}
+
+    {% block body %}   
+
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1">DashboardAdmin</h2>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-t-25">
+                         <canvas id="depots" width="400" height="100"></canvas>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script>
+    let depots = document.querySelector("#depots")
+    let depoGraph = new Chart(depots, {
+        type: 'pie',
+        data: {
+            labels: ["Coach","Admin","Abonne","Blocked","Unblocked"],
+            datasets: [{
+                label: "Répartition des depots",
+                data: [{{Coach }},{{Abonne}},{{Admin }},{{ unblocked }},{{ blocked }}],
+                backgroundColor: ["#FF6384","#36A2EB","#FFCE56","#720000","#e6e6e6"]
+        }]
+    }
+})
+
+</script>
+{% endblock %}
+

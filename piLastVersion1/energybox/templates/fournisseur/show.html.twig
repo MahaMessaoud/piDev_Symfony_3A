@@ -1,0 +1,34 @@
+{%  extends 'baseBack.html.twig' %}
+
+{% block title %} EnergyBox| Fournisseur {% endblock %}
+
+{% block body %}
+
+
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Nom</th>
+                                                    <td>{{ fournisseur.nomFournisseur }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Contact</th>
+                                                    <td>{{ fournisseur.contactFournisseur }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <td>{{ fournisseur.emailFournisseur }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Adresse</th>
+                                                    <td>{{ fournisseur.adresseFournisseur }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div align="center" class="card-footer">
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_fournisseur_index') }}">Retour à la Liste</a></button>
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_fournisseur_sendemail', {'id': fournisseur.id}) }}">Envoyer mail</a></button>
+                                            </div>
+
+                                        
+{% endblock %}

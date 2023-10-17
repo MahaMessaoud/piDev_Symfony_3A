@@ -1,0 +1,58 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Activité{% endblock %}
+
+{% block body %}
+
+    <!--? Hero Start -->
+    <div class="slider-area2">
+        <div class="slider-height2 d-flex align-items-center">
+            <div class="col-xl-12">
+                <div class="hero-cap hero-cap2 pt-70 text-center">
+                    <h2>Activités</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br><br><br><br>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="section-tittle text-center mb-100">
+                    <span>Notre Activités</span>
+                    <h2>Séléctionnez l'activité pour plus de données</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for activite in activites %}
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="single-cat single-cat2 text-center mb-50">
+                    <div class="card-img">
+                        <a href="{{ path('app_activite_crud_show_front', {'id': activite.id}) }}">
+                            {% set img = activite.imageActivite %}
+                            <img class="card-img rounded-0" src="{{ asset(img) }}" alt="Erreur Import.">
+                        </a>
+                    </div>
+                    <div class="cat-cap">
+                        <br>
+                        <h1><a href="{{ path('app_activite_crud_show_front', {'id': activite.id}) }}">{{ activite.nomActivite }}</a></h1>
+                        <p>{{ activite.descriptionActivite|striptags|slice(0, 100) }}.</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br><br><br><br><br>
+        <div class="pagination">
+            {% do activites.setPageRange(6) %}
+            {{knp_pagination_render(activites, 'pagination.html.twig')}}
+            <br><br><br><br><br>
+        </div>
+        
+    </div>
+
+    </body>
+{% endblock %}

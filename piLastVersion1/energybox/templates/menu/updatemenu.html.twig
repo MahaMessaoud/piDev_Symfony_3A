@@ -1,0 +1,60 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Menu{% endblock %}
+
+{% block body %}
+    <div class="card">
+    <div class="card-header">
+        <strong>Modifier</strong> Menu
+    </div>
+
+<div class="card-body card-block">
+        {{ form_start(formmenu,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formmenu.categories,"Nom du menu :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formmenu.categories, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formmenu.categories) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formmenu.categories) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formmenu.descriptionmenu,"Description du menu :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formmenu.descriptionmenu, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formmenu.descriptionmenu) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formmenu.descriptionmenu) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(formmenu.UserId ,"Utilisateur :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(formmenu.UserId, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(formmenu.UserId) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(formmenu.UserId) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            {% for message in app.session.flashBag.get('success') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Modifier') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_ListMenu') }}">Consulter Liste</a></button>
+            </div>
+        {{ form_end(formmenu) }}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

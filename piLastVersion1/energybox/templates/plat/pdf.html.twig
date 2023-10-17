@@ -1,0 +1,99 @@
+<table class="table table-striped" border="1" style="background-color: #f5f5f5; color: #000000;">
+        <style>
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 30px;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f2f2f2;
+                color: #333;
+            }
+
+            h1 {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .table-title {
+                background-color: #b00707;
+                color: #fff;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 10px;
+            }
+
+            .table-subtitle {
+                background-color: #f2f2f2;
+                color: #333;
+                font-size: 16px;
+                font-weight: bold;
+                padding: 10px;
+            }
+
+            .table-data {
+                font-size: 14px;
+            }
+
+            .table-data td {
+                vertical-align: middle;
+            }
+
+            .table-data td:first-child {
+                font-weight: bold;
+                text-transform: uppercase;
+                color: black;
+            }
+
+            .table-data td:last-child {
+                text-align: center;
+            }
+        </style>
+
+        <div style="background-color: #f5f5f5; padding: 30px;">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <h1 style="margin-bottom: 50px;">Voila le plat que vous avez choisi</h1>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th colspan="2" class="table-title">Détails du plat</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-data">
+                    <tr>
+                        <td>Nom</td>
+                        <td>{{ plat[0].nom ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Prix</td>
+                        <td>{{ plat[0].prix ?? '' }}DT</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ plat[0].description ?? '' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Calories</td>
+                        <td>{{ plat[0].calories ?? '' }} kcal</td>
+                    </tr>
+                    <tr>
+                        <td>Catégorie dans le menu</td>
+                        <td>{{ plat[0].categories ?? '' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p class="table-subtitle">Bon appétit !</p>
+            </div>
+        </div>

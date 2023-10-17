@@ -1,0 +1,192 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Blog{% endblock %}
+{% block page %}Details about {{ post.title }}{% endblock %}
+{% block body %}
+    <!-- default styles -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- important mandatory libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js" type="text/javascript"></script>
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+    <section class="blog_area single-post-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 posts-list">
+                    <div class="single-post">
+                        <div class="feature-img">
+                            {% set img = post.image %}
+                            <img class="img-fluid" src="{{ asset(img) }}" alt="">
+
+                        </div> <br><div style="width:100%;display:flex;flex-direction: row;gap:15px;"><script>
+                                $(document).ready(function() {
+                                    // initialize with defaults
+                                    $("#input-id").rating();
+
+                                    // with plugin options (do not attach the CSS class "rating" to your input if using this approach)
+                                    $("#input-id").rating({'size':'lg'});
+
+                                    // get the initial rating value
+                                    var ratingValue = $("#input-id").val();
+
+                                    // display the initial rating value
+                                    $("#rating-value").text(ratingValue);
+
+                                    // send the rating value to a PHP script
+                                    $.ajax({
+                                        url: "save_rating.php",
+                                        type: "POST",
+                                        data: { ratingValue: ratingValue },
+                                        success: function(response) {
+                                            console.log("Rating value saved: " + response);
+                                        }
+                                    });
+
+                                    // update the rating value when the user changes it
+                                    $("#input-id").on("rating:change", function(event, value, caption) {
+                                        $("#rating-value").text(value);
+
+                                        // send the new rating value to the PHP script
+                                        $.ajax({
+                                            url: "save_rating.php",
+                                            type: "POST",
+                                            data: { ratingValue: value },
+                                            success: function(response) {
+                                                console.log("Rating value saved: " + response);
+                                            }
+                                        });
+                                    });
+                                });
+                            </script>
+
+</div>
+                        <input id="input-id" type="text" class="rating" data-size="lg" >
+
+
+                        <div class="blog_details">
+
+                            <ul class="blog-info-link mt-3 mb-4">
+
+                                <li>{{ post.datePost ? post.datePost|date('d-m-Y') : '' }}</li>
+                            </ul>
+                            <h2 style="color: #900c0c;">{{ post.title }}
+                            </h2>
+                            <h3 >
+                                {{ post.details }}
+                            </h3>
+                            <div class="flex justify-center align-items flex-row">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_post_show', {id: post.id})) }}" class="share facebook">
+                                    <svg class="w-3 h-3 text-blue-600 fill-current mr-4 icon-facebook" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="width: 20px; height: 20px;">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments-area">
+
+                        <aside class="single_sidebar_widget search_widget">
+                            <form >
+                                <a class="button rounded-0 primary-bg text-danger w-100 btn_1 boxed-btn" style="width:250px" type="submit" href="{{ path('app_comment_new', {'id': post.id})  }}"><strong>Comment Post</strong></a>
+                            </form>
+                        </aside>
+                            <br>
+                            <br>
+                            <br>
+                            <h4><strong>Comments</strong></h4>
+                        <div class="comment-list">
+                            {% for comment in post.comments %}
+                            <div class="single-comment justify-content-between d-flex">
+                                <div class="user justify-content-between d-flex">
+                                    <div class="thumb">
+                                        <img src="{{ asset('frontOffice/img/comment/comment_3.png') }}" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h5>
+                                        <a href="#">
+                                            {{ comment.user.username }}
+                                        </a>
+                                        </h5>
+                                            <p class="comment">
+                                                {{ comment.description }}
+                                        </p>
+                                        <div class="d-flex justify-content-between">
+
+                                            <div class="flex-center-start align-items-center" style="float: left;">
+                                                <h5 class="single_sidebar_widget flex-center-start" style="float: left;">
+                                                    <p>{{ comment.dateCom ? comment.dateCom|date('d M Y') : '' }}</p>
+
+                                                    <ul class="blog-info-link " style="position:absolute; right:5%;">
+                                                        <li><a href="{{ path('app_comment_edit', {'id': comment.id}) }}">Edit</a></li>
+                                                        <li>{{ include('comment/_delete_form.html.twig') }}</li>
+                                                    </ul>
+                                                </h5>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <br>
+                                <br>
+                                {% else %}
+                                <h4 style="position:absolute; right:40%;color: #ff3b00 "><strong>No comments found !</strong></h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-5">
+                    <div class="blog_right_sidebar">
+
+                        <aside class="single_sidebar_widget search_widget" style="background-color: transparent">
+                            <div class="blog-author" style="background-color: transparent">
+                                <div class="media align-items-center" >
+                                    <img src="{{ asset('frontOffice/img/blog/author.png') }}" alt="">
+                                    <div class="media-body">
+                                        <a href="#">
+                                            <h4><strong>Author: </strong>{{post.user.username }}</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class=" search_widget" style="background-color:transparent;">
+                            <form >
+                                <a class="button rounded-0 primary-bg text-danger w-100 btn_1 boxed-btn" type="submit" href="{{ path('app_post_edit', {'id': post.id}) }}"><strong>Edit Your Post</strong></a>
+                            </form>
+                        </aside>
+                        <br><br>
+                        <aside class=" search_widget" style="background-color:transparent;">
+                   {{ include('post/_delete_form.html.twig') }}
+                        </aside>
+                        <br><br><aside class=" search_widget" style="background-color:transparent;">
+                            <form >
+                                <a class="button rounded-0 primary-bg text-danger w-100 btn_1 boxed-btn" type="submit" href="{{ path('app_post_index') }}"><strong>Back To Blog</strong></a>
+                            </form>
+                        </aside>
+                        <br><br><aside class=" search_widget" style="background-color:transparent;">
+                            <form >
+                                <a class="button rounded-0 primary-bg text-danger w-100 btn_1 boxed-btn" type="submit" href="{{path('app_photo',{'id':post.id})}}"><strong>Edit Image</strong></a>
+                            </form>
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+{% endblock %}

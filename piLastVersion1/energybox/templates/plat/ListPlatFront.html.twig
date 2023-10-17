@@ -1,0 +1,98 @@
+{% block title %}EnergyBox | Restaurants{% endblock %}
+
+{% block body %}
+
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 text-center pt-70">
+                                <h2>Bienvenue chez EnergyBox Restaurant</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? Services Area Start -->
+        <section class="services-area pt-100 pb-150">
+            <!--? Want To work -->
+            <section class="wantToWork-area w-padding">
+                <div class="container">
+                    <div class="row align-items-end justify-content-between">
+                        <div class="col-lg-6 col-md-10 col-sm-10">
+                            <div class="section-tittle">
+                                <!--<span>Nos Menus</span>-->
+                                <!--<h2>PUSH YOUR LIMITS FORWARD We Offer to you</h2>-->
+                                <span>Nos Menus</span>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="col-xl-2 col-lg-2 col-md-3">
+                            <a href="services.html" class="btn wantToWork-btn f-right">More Services</a>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </section>
+            <!-- Want To work End -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-cat single-cat2 text-center mb-50">
+                            <div class="cat-icon">
+                                <i class="flaticon-fitness"></i>
+                            </div>
+                            <div class="cat-cap">
+                                <h5><a>Petit déjeuner</a></h5>
+                            </div>
+                            <div class="img-cap">
+                                <a href="{{ path('app_ListPlatFront', {'id': i.id}) }}" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                            </div>
+                            <!-- <p>The sea freight service has grown consider ably in recent years. We spend timetting to kn.</p>-->
+                        </div>
+
+                        <div class="img-cap">
+                            <a href="" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat single-cat2 text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-healthcare-and-medical"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a>Déjeuner</a></h5>
+                        </div>
+                        <div class="img-cap">
+                            <a href="" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat single-cat2 text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-clock"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a>Dîner</a></h5>
+                        </div>
+                        <div class="img-cap">
+                            <a href="{{ path('menu_list', {'categories': 'Dîner'}) }}" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        
+{% endblock %}

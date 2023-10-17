@@ -1,0 +1,28 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Menus{% endblock %}
+
+{% block body %}
+    {% block table %}
+<table border="1">
+    <ul>
+        <tr>
+            <th>Nom</th>
+
+        </tr>
+        {% for menu in menus %}
+            <li>
+s                <ul>
+                    {% for plat in menuPlats[menu.id] %}
+                        <td>{{ plat.nom }}</td>
+
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</table>
+    {% endblock %}
+{% endblock %}
+
+

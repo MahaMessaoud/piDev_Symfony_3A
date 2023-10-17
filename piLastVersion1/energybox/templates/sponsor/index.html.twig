@@ -1,0 +1,105 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+
+	<div class="map-data m-b-40">
+		<h3 class="title-3 m-b-30">
+			<i class="fas fa-user"></i>Gestion Sponsors</h3>
+		<div class="table-responsive m-b-40">
+			<div class="table-data__tool">
+				<div class="table-data__tool-left">
+					<div class="rs-select2--light rs-select2--md">
+						<select class="js-select2" name="property">
+							<option selected="selected">Trier Par</option>
+							<option value="">Nom</option>
+							<option value="">Email</option>
+							<option value="">NumTel</option>
+						</select>
+						<div class="dropDownSelect2"></div>
+					</div>
+					<button class="au-btn-filter">
+						<i class="zmdi zmdi-filter-list"></i>filters</button>
+                        <a href="{{ path('app_sponsor_new') }}">
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>
+                        Ajouter sponsor
+                    </button>
+                    &nbsp;
+                </a>
+				</div>
+			</div>
+		</div>
+		<input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+
+		<div class="table-responsive m-b-40">
+			<table class="table table-borderless table-data3">
+				<thead>
+					<tr>
+						<!--  <th>Id</th> -->
+						<td style="color:white;margin-left:30px;">
+							<strong>NomSponsor</strong>
+						</td>
+						<td style="color:white;margin-left:30px;">
+							<strong>Donnation</strong>
+						</td>
+						<td style="color:white;margin-left:30px;">
+							<strong>Image</strong>
+						</td>
+						<td style="color:white;margin-left:30px;">
+							<strong>Compitions associés</strong>
+						</td>
+						<td style="color:white;margin-left:30px;">
+							<strong></strong>
+						</td>
+					</tr>
+				</thead>
+			</strong>
+		</td>
+	</tr>
+</thead>
+<tbody>
+	{% for sponsor in sponsors %}
+		{% set img=sponsor.image %}
+		<tr>
+			<td>{{ sponsor.nomSponsor }}</td>
+			<td>{{ sponsor.donnation }}</td>
+			<td><img src="{{ asset(img) }}" height="200px;" width="100px;"></td>
+			
+			<td>
+				<a href="{{ path('app_sponsor_show', {'id': sponsor.id}) }}">
+					<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+						<i class="zmdi zmdi-eye"></i>
+					</button>
+				</a>
+				&nbsp;&nbsp;
+				<a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}">
+					<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+						<i class="zmdi zmdi-edit"></i>
+					</button>
+				</a>
+				{{ include('sponsor/_delete_form.html.twig') }}
+			</td>
+
+		</tr>
+	{% else %}
+		<tr>
+			<td colspan="8">no records found</td>
+		</tr>
+	{% endfor %}
+</tbody></table><div style="text-align: center; !important;margin-left: 550px; " class="navigation">
+{{ knp_pagination_render(sponsors) }}</div><!-- END WHITE BACKGROUND--></div></div></div><script>function filterTable() {
+const filter = document.getElementById('searchInput').value.toUpperCase();
+const rows = document.querySelectorAll('table tr');
+for (let i = 1; i < rows.length; i++) {
+const cols = rows[i].querySelectorAll('td');
+let visible = false;
+for (let j = 0; j < cols.length; j++) {
+const cell = cols[j];
+if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+visible = true;
+break;
+}
+}
+rows[i].style.display = visible ? '' : 'none';
+}
+}
+document.getElementById('searchInput').addEventListener('keyup', filterTable);</script>{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Pack
+{% endblock %}
+
+{% block body %}
+
+	<div class="map-data m-b-40">
+		<h1>Modifier le Pack</h1>
+
+		{{ include('pack/formModif.html.twig', {'button_label': 'Update'}) }}
+		<br>
+		<button type="button" class="btn btn-danger">
+			<a href="{{ path('app_pack_index') }}" style="color:white;">
+				liste des packs</a>
+		</button>
+		<br>
+		<br>
+		{{ include('pack/_delete_form.html.twig') }}
+	</div>
+	<!-- END WHITE BACKGROUND-->
+</div>{% endblock %}

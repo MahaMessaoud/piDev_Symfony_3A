@@ -1,0 +1,29 @@
+{% extends 'baseFront.html.twig' %}
+{% block body %}
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+                                <h2>Vous avez déjà un abonnement en cours !</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="services-area pt-100 pb-150">
+            <section class="services-area pt-100 pb-150 section-bg" data-background="{{ asset('frontOffice/img/gallery/section_bg01.png')}}" style="background-image: url(&quot;assets/img/gallery/section_bg01.png&quot;);">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <div class="text-center">
+                    <h4 class="alert-heading">Alerte !</h4>
+                    <p>Vous avez déjà un abonnement en cours!..</p>
+                    <a href="{{ path('app_pack_tryindex') }}" class="btn btn-primary">Retourner à la liste des packs</a>
+                  </div>
+                </div>
+            </section>
+        </div>
+    </main>
+{% endblock %}

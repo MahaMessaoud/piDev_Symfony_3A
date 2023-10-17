@@ -1,0 +1,78 @@
+
+<div class="card-body card-block">
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.typePack,"Type pack")}}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.typePack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.typePack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.typePack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.montantPack,"Montant pack")}}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.montantPack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.montantPack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.montantPack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.DureePack,"Durée")}}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.DureePack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.DureePack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.DureePack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.disponibilitePack,"Disponibilité")}}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.disponibilitePack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.disponibilitePack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.disponibilitePack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+		<div class="row form-group">
+			<div class="col col-md-3">
+				{{ form_label(form.placesPack,"Places Pack")}}
+			</div>
+			<div class="col-12 col-md-9">
+				{{ form_widget(form.placesPack,{'attr':{'class':'form-control'}})}}
+				{% if form_errors(form.placesPack) is not empty %}
+					<small class="form-text text-muted">{{ form_errors(form.placesPack)}}</small>
+				{% endif %}
+			</div>
+		</div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.descriptionPack,"Description")}}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.descriptionPack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.descriptionPack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.descriptionPack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_pack_index') }}">Consulter Liste</a></button>
+    </div>
+    {{ form_end(form) }}
+</div>
+    
+  

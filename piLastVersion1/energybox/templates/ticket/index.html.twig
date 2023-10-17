@@ -1,0 +1,76 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Tickets {% endblock %}
+
+{% block body %}
+
+<div class="map-data m-b-40">
+    <h3 class="title-3 m-b-30">
+        <i class="fas fa-table"></i>Gestion Tickets</h3>
+
+    <div class="table-responsive m-b-40">
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">Trier Par</option>
+                        <option value="">Date</option>
+                        <option value="">Cours</option>
+                        <option value="">Jour</option>
+                        <option value="">Heure Début</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
+            </div>
+            <div class="table-data__tool-right">
+                <a href="{{ path('app_ticket_new') }}">
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>
+                        Ajouter Ticket
+                    </button>
+                    &nbsp;
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-borderless table-data3">
+        <thead>
+            <tr>
+                <td style="color: white;"><strong style="margin-left:30px">Description</strong></td>
+                <td style="color: white;"><strong style="margin-left:30px">Compétition</strong></td>
+                <td style="color: white;"><strong style="margin-left:30px">Date</strong></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.descriptionTicket }}</td>
+                <td>{{ ticket.competition.nomCompetition }}</td>
+                <td>{{ ticket.competition.dateCompetition|date('Y-m-d') }}</td>
+                <td>
+                    <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">
+                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+                            <i class="zmdi zmdi-eye"></i>                               
+                        </button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">
+                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                            <i class="zmdi zmdi-edit"></i>                          
+                        </button>
+                    </a>
+                    {{ include('ticket/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de tickets.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

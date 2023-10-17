@@ -1,0 +1,41 @@
+    <div class="card-body card-block">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.codePromotion,"Code promotion") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.codePromotion, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.codePromotion) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.codePromotion) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.reductionPromotion,"Réduction") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.reductionPromotion,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.reductionPromotion) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.reductionPromotion) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.DateExpiration,"Date Expiration") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.DateExpiration,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.DateExpiration) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.DateExpiration) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_promotion_index') }}">Consulter Liste</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>

@@ -1,0 +1,42 @@
+
+
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+    <br>
+   <div class="col-lg-6 col-md-6">
+     <div class="form-box user-icon mb-30">
+     <h5 class="mb-30">
+    {{ form_label(form.pack,"Type d'abonnement")}}</h3>
+   
+     {{ form_widget(form.pack,{'attr':{'class':'form-control'}})}}
+     {{form_errors(form.pack)}}
+    </div>
+    </div>
+    <br>
+    <div class="col-lg-6 col-md-6">
+     <div class="form-box user-icon mb-30">
+     <h3 class="mb-30">
+    {{ form_label(form.codePromo,"code promo")}}</h3>
+   
+     {{ form_widget(form.codePromo,{'attr':{'class':'form-control'}})}}
+     {{form_errors(form.codePromo)}}
+    </div>
+    </div>
+    <br>
+  <div class="col-lg-6 col-md-6">
+     <div class="form-box user-icon mb-30">
+     <h3 class="mb-30">
+   
+     {{ form_widget(form.user,{'attr':{'class':'form-control'}})}}
+     {{form_errors(form.user)}}
+    </div>
+    </div>
+    <br>
+    <br>
+     <div class="col-lg-6 col-md-6">
+        <div class="form-box user-icon mb-30">
+      <button type="submit-info" class="btn btn-secondary">{{ button_label|default('Valider') }}</button>
+     </div>{{ form_end(form) }}
+
+ 
+                       
+                       

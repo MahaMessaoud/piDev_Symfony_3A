@@ -1,0 +1,26 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Ticket {% endblock %}
+
+{% block body %}
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Compétition</th>
+                <td>{{ ticket.competition }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ ticket.descriptionTicket }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_ticket_index') }}">Retour à la Liste</a></button>
+    </div>
+
+
+{% endblock %}
+

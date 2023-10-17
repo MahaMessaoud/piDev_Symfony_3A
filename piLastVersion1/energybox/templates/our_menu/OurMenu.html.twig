@@ -1,0 +1,112 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Restaurant{% endblock %}
+
+{% block body %}
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 text-center pt-70">
+                                <h2>Restaurant</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? Services Area Start -->
+        <section class="services-area pt-100 pb-150">
+            <!--? Want To work -->
+            <section class="wantToWork-area w-padding">
+                <div class="container">
+                    <div class="row align-items-end justify-content-between">
+                        <div class="col-lg-6 col-md-10 col-sm-10">
+                            <div class="section-tittle">
+                                <span>Nos Menus</span>
+                                <h2>SÉLÉCTIONNEZ VOTRE PLAT PRÉFERÉ</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Want To work End -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-cat single-cat2 text-center mb-50">
+                            <div class="cat-icon">
+                                <i class="flaticon-fitness"></i>
+                            </div>
+                            <div class="cat-cap flex-grow-1">
+                                <h5><a>Petit déjeuner</a></h5>
+                            </div>
+                            <div class="img-cap">
+                                <a href="{{ path('app_ListPlatFront', {'id': 1}) }}" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat single-cat2 text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-healthcare-and-medical"></i>
+                        </div>
+                        <div class="cat-cap" >
+                            <h5><a>Déjeuner</a></h5>
+                        </div>
+                        <div class="img-cap">
+                            <a href="{{ path('app_ListPlatFront', {'id': 2}) }}" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="single-cat single-cat2 text-center mb-50">
+                        <div class="cat-icon">
+                            <i class="flaticon-clock"></i>
+                        </div>
+                        <div class="cat-cap">
+                            <h5><a>Dîner</a></h5>
+                        </div>
+                        <div class="img-cap">
+                            <a href="{{ path('app_ListPlatFront', {'id': 3}) }}" class="">En savoir plus<i class="ti-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {# TRADUCTION #}
+            <style>
+                #google_translate_element {
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                    background-color: #f81f1f;
+                    border: 1px solid #8B0000;
+                    border-radius: 4px;
+                    font-family: Arial, sans-serif;
+                }
+
+                #google_translate_element:hover {
+                    cursor: pointer;
+                    opacity: 0.9;
+                    background-color: #8B0000;
+                }
+                #google_translate_element {
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+            </style>
+            <div id="google_translate_element"></div>
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+            <script type="text/javascript">
+                function googleTranslateElementInit() {
+                    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                }
+            </script>
+            {# TRADUCTION #}
+            <!-- Services Area End -->
+        </section>
+{% endblock %}

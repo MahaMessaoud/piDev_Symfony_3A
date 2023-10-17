@@ -1,0 +1,41 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Utilisateur | {{ user.username }} {% endblock %}
+
+{% block body %}
+    <div align="center">
+    {% set img=user.image %}
+        <img src="{{ asset(img) }}" style="height: 350px;" alt="Erreur Import.">
+    </div>
+    <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Username</strong></td>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td><strong>NumTel</strong></td>
+                <td>{{ user.numTel }}</td>
+            </tr>
+            <tr>
+                <td><strong>Date de Naissance</strong></td>
+                <td>{{ user.dateN ? user.dateN|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <td><strong>Role</strong></td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_user_index') }}">Retour à la Liste</a></button>
+    </div>
+
+    
+{% endblock %}

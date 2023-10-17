@@ -1,0 +1,28 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Promotion{% endblock %}
+
+{% block body %}
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><strong>Code Promotion</strong></td>
+					<td>{{ promotion.codePromotion }}</td>
+				</tr>
+				<tr>
+					<td><strong>Reduction Promotion</strong></td>
+					<td>{{ promotion.reductionPromotion }}</td>
+				</tr>
+				<tr>
+					<td><strong>Date Expiration</strong></td>
+					<td>{{ promotion.DateExpiration ? promotion.DateExpiration|date('Y-m-d H:i:s') : '' }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div align="center" class="card-footer">
+			<button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_promotion_index') }}">Retour à la Liste</a></button>
+		</div>
+		
+
+{% endblock %}

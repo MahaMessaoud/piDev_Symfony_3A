@@ -1,0 +1,42 @@
+    <div class="card-body card-block">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.objetReponse,"Objet :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.objetReponse, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.objetReponse) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.objetReponse) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.pieceJointe,"Piéce Jointe :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.pieceJointe,{'attr':{'class':'form-input'}})}}
+                    {% if form_errors(form.pieceJointe) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.pieceJointe) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.contenuReponse,"Réponse :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.contenuReponse,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.contenuReponse) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.contenuReponse) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small">{{ button_label|default('Répondre') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_reponse_index') }}">Consulter Liste</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>

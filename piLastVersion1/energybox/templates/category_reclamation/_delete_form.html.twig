@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('app_category_reclamation_delete', {'id': category_reclamation.id}) }}" onsubmit="return confirm('Êtes vous sûr de supprimer cette catégorie ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category_reclamation.id) }}">
+    <button style="margin-top:-18px; margin-right:53px" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Supprimer">
+        <i class="zmdi zmdi-delete"></i>
+    </button>
+</form>
+

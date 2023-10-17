@@ -1,0 +1,29 @@
+{% extends 'baseBack.html.twig' %}
+{% block body %}
+    <h1>Sponsor</h1>
+    <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>NomSponsor</th>
+                <td>{{ sponsor.nomSponsor }}</td>
+            </tr>
+            <tr>
+                <th>Donnation</th>
+                <td>{{ sponsor.donnation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    {% set img=sponsor.image %}
+    <strong>Image</strong>
+    <br><br>
+    <img src="{{ asset(img) }}" height="550px;" width="350px;">
+
+<br><br><br>
+<div align="center" class="card-footer">
+    <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_sponsor_index') }}">Retour à la Liste</a></button>
+</div>
+    
+{% endblock %}

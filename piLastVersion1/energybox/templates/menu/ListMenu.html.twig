@@ -1,0 +1,70 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Menu{% endblock %}
+
+{% block body %}
+
+<div class="map-data m-b-40">                   
+        <h3 class="title-3 m-b-30">
+            <i class="fas fa-table"></i>Gestion Menu</h3>
+        <div class="table-responsive m-b-40">
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+                    <a href="{{ path('app_tri_nomMA') }}" class="btn btn-outline-dark btn-sm"><i class="fas fa-sort-alpha-up"></i>Trier par nom</a>
+                    <a href="{{ path('app_tri_nomMD') }}" class="btn btn-outline-dark btn-sm"><i class="fas fa-sort-alpha-down"></i>Trier par nom</a>
+                </div>
+                <div class="table-data__tool-right">
+                    <a href="{{ path('app_addmenu') }}">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>
+                            Ajouter Menu
+                        </button>
+                        &nbsp;
+                    </a>
+                    
+                    <div class="table table-borderless table-data3" id="searchDivContainer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <table class="table table-borderless table-data3">
+                <thead>
+                <tr>
+                    <td style="color: white;"><strong style="margin-left:30px">Nom</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Description</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Utilisateur</strong></td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for menu in tabmenu %}
+                    <tr>
+                        <td>{{ menu.categories }}</td>
+                        <td>{{ menu.descriptionmenu }}</td>
+                        <td>{{ menu.UserId }}</td>
+                        <td>
+                            <a href="{{ path('app_removemenu', {'id': menu.id}) }}">
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Supprimer">
+                                    <i class="zmdi zmdi-delete"></i>                               
+                                </button>
+                            </a>
+                            &nbsp;&nbsp;
+                            <a href="{{ path('app_updatemenu', {'id': menu.id}) }}">
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                                    <i class="zmdi zmdi-edit"></i>                          
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Pas de menus.</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

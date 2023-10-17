@@ -1,0 +1,57 @@
+    <div class="col-lg-8 col-md-8">
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'abbr':{'class':'form-horizontal'}}) }}
+        <div class="mt-10">
+            <div class="input-group-icon mt-10">
+                {{ form_widget(form.nomUserReclamation,{'attr':{'class':'single-input'}})}}
+                {% if form_errors(form.nomUserReclamation) is not empty %}
+                    <p class="form-text text-muted">{{ form_errors(form.nomUserReclamation) }}</p>
+                {% endif %}
+            </div>    
+        </div>
+
+        <div class="mt-10">
+            <div class="input-group-icon mt-10">
+                {{ form_widget(form.emailUserReclamation, {'attr':{'class':'single-input'}})}}
+                {% if form_errors(form.emailUserReclamation) is not empty %}
+                    <p class="form-text text-muted">{{ form_errors(form.emailUserReclamation) }}</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="mt-10">
+            <div class="input-group-icon mt-10">
+                {{ form_widget(form.category, {'attr':{'class':'form-select'}})}}
+                {% if form_errors(form.category) is not empty %}
+                    <p class="form-text text-muted">{{ form_errors(form.category) }}</p>
+                {% endif %}
+            </div>
+        </div> 
+    </div>
+    <div class="col-lg-8 col-md-8">                            
+        <div class="mt-10">
+            <div class="input-group-icon mt-10">
+                {{ form_widget(form.objetReclamation, {'attr':{'class':'single-input'}})}}
+                {% if form_errors(form.objetReclamation) is not empty %}
+                    <p class="form-text text-muted">{{ form_errors(form.objetReclamation) }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-8"> 
+        <div class="mt-10">
+            <div class="input-group-icon mt-10">
+                {{ form_widget(form.texteReclamation, {'attr':{'class':'single-input'}})}}
+                {% if form_errors(form.texteReclamation) is not empty %}
+                    <p class="form-text text-muted">{{ form_errors(form.texteReclamation) }}</p>
+                {% endif %}
+            </div>
+        </div>
+    
+
+        <div align="center">
+            <br><br><br><br>
+            <button class="btn">{{ button_label|default('Envoyer') }}</button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

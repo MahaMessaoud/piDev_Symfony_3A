@@ -1,0 +1,34 @@
+{%  extends 'baseBack.html.twig' %}
+
+
+{% block title %} EnergyBox | Matériaux {% endblock %}
+
+{% block body %}
+
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <td><strong>Nom</strong></td>
+                                                    <td>{{ materiel.nomMateriel }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Réference</strong></td>
+                                                    <td>{{ materiel.referenceMateriel }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Date Maintenance</strong></td>
+                                                    <td>{{ materiel.dateMaintenanceMateriel ? materiel.dateMaintenanceMateriel|date('Y-m-d') : '' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Quantité</strong></td>
+                                                    <td>{{ materiel.quantiteMateriel ? materiel.quantiteMateriel : 0 }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div align="center" class="card-footer">
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_materiel_index') }}">Retour à la Liste</a></button>
+                                            </div>
+                                            
+{% endblock %}
+
+

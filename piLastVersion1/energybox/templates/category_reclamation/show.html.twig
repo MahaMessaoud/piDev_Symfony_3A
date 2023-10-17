@@ -1,0 +1,29 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Catégorie {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ category_reclamation.nomCategory }}</td>
+            </tr>
+            <tr>
+                <th>Priorité</th>
+                <td>{{ category_reclamation.prioriteCategory }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <strong>Detail de Catégorie:</strong>
+    <br>
+    <p>{{ category_reclamation.descriptionCategory }}</p>
+    <br>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_category_reclamation_index') }}">Retour à la liste</a></button>
+    </div>
+
+    
+{% endblock %}

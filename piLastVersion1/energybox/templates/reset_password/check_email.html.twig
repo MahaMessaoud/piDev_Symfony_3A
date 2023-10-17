@@ -1,0 +1,69 @@
+{% block stylesheets %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link href="{{ asset('./BackOffice/css/font-face.css') }}" rel="stylesheet" media="all">
+
+    <link rel="icon" type="image/png" href="{{ asset('./Loginassets/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('./Loginassets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('./Loginassets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('./Loginassets/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/css/main.css') }}">
+    <!--===============================================================================================-->
+{% endblock %}
+{% block body %}
+<div class="limiter">
+        <div class="container-login100" style="background-image: url('/frontOffice/img/gallery/gallery1.png'); opacity: 1;">
+            <div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+                    ENERGYBOX<br>____________<br><br>
+					Account Login
+				</span>
+
+  <center>  <p style="color:#E7DFDF;font-size:12px;">
+        If an account matching your email exists, then an email was just sent that contains a link that you can use to reset your password.
+        This link will expire in {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p></center>
+   <center> <p style="color:#E7DFDF; font-size:15px;">If you don't receive an email please check your spam folder or <a href="{{ path('app_forgot_password_request') }}"><center><b style="color:#720000;">try again.</b></center></a></p></center>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('./Loginassets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('./Loginassets/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('./Loginassets/js/main.js') }}"></script>
+
+{% endblock %}

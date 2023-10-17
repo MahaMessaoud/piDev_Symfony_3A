@@ -1,0 +1,76 @@
+
+
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Planning{% endblock %}
+
+{% block tache %}
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+
+            <h2>Abonnement</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? Blog Area Start-->
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        
+     <h1>Abonnement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type Abonnement</th>
+                <th>Durée Abonnement</th>
+                <th>Date Achat</th>
+                <th>Date Fin</th>
+                <th>Etat Abonnement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.pack.typePack  }}</td>
+                <td>{{ abonnement.pack.dureePack  }}</td>
+                <td>{{ abonnement.dateAchat ? abonnement.dateAchat|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ abonnement.etatAbonnement }}</td>
+                <td>
+                    <a href="{{ path('app_abonnement_showClient', {'id': abonnement.id}) }}">show</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a style="background-color=black; color=red;"href="{{ path('app_abonnement_newClient') }}">Create new</a>
+   
+
+
+                    </div>
+                </div>                
+            </div>
+        </section>
+    </main>
+{% endblock %}

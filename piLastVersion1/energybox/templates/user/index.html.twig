@@ -1,0 +1,103 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Utilisateurs{% endblock %}
+
+{% block body %}
+
+	<div class="map-data m-b-40">
+		<h3 class="title-3 m-b-30">
+			<i class="fas fa-user"></i>Gestion Utilisateurs</h3>
+			<div class="table-responsive m-b-40">
+				<div class="table-data__tool">
+					<div class="table-data__tool-left">
+						<div class="rs-select2--light rs-select2--md">
+							<select class="js-select2" name="property">
+								<option selected="selected">Trier Par</option>
+								<option value="">Nom</option>
+								<option value="">Email</option>
+								<option value="">NumTel</option>
+							</select>
+							<div class="dropDownSelect2"></div>
+						</div>
+						<button class="au-btn-filter">
+							<i class="zmdi zmdi-filter-list"></i>filters</button>
+					</div>
+				</div>
+			</div>
+		<input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+		<br>
+
+			<table class="table table-borderless table-data3">
+				<thead>
+					<tr>
+						<td style="color: white;"><strong style="margin-left:30px">Username</strong></td>
+						<td style="color: white;"><strong style="margin-left:27px">Email</strong></td>
+						<td style="color: white;"><strong style="margin-left:25px">Roles</strong></td>
+						<td style="color: white;"><strong style="margin-left:40px">NumTel</strong></td>
+						<td style="color: white;"><strong style="margin-left:27px">Date Naissance</strong></td>
+						<td style="color: white;"></td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						{% set img=user.image %}
+						<tr>
+							<td>{{ user.username }}</td>
+							<td>{{ user.email }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.numTel }}</td>
+							<td>{{ user.dateN ? user.dateN|date('Y-m-d') : '' }}</td>
+							<td>
+								<a href="{{ path('app_user_unblock', {'id': user.id}) }}">
+									<button style="margin-top:-18px; margin-right:38px" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Unblock">
+										<i class="zmdi zmdi-shield-check"></i>                               
+									</button>
+								</a>
+								<a href="{{ path('app_user_show', {'id': user.id}) }}">
+									<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+										<i class="zmdi zmdi-eye"></i>                               
+									</button>
+								</a>
+								&nbsp;&nbsp;
+								<a href="{{ path('app_user_block', {'id': user.id}) }}">
+									<button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Block">
+										<i class="zmdi zmdi-block"></i>                          
+									</button>
+								</a>
+								{{ include('user/_delete_form.html.twig') }}
+							</td>
+
+							
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+	</div>
+
+
+
+
+
+
+<script>
+function filterTable() {
+const filter = document.getElementById('searchInput').value.toUpperCase();
+const rows = document.querySelectorAll('table tr');
+for (let i = 1; i < rows.length; i++) {
+const cols = rows[i].querySelectorAll('td');
+let visible = false;
+for (let j = 0; j < cols.length; j++) {
+const cell = cols[j];
+if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+visible = true;
+break;
+}
+}
+rows[i].style.display = visible ? '' : 'none';
+}
+}
+document.getElementById('searchInput').addEventListener('keyup', filterTable);</script>{% endblock %}

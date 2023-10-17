@@ -1,0 +1,36 @@
+
+
+{% block body %}
+<div class="card-body card-block">
+    {{ form_start(form,{attr:{novalidate:'novalidate'} }) }}
+
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.nomSponsor,"Nom sponsor") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.nomSponsor,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.nomSponsor) }}
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.donnation,"Donnation") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.donnation,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.donnation) }}
+        </div>
+    </div>
+
+    
+    {{ form_widget(form) }}
+
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_sponsor_index') }}">Consulter Liste</a></button>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

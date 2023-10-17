@@ -1,0 +1,69 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Catégories {% endblock %}
+
+{% block body %}
+<div class="map-data m-b-40">                   
+    <h3 class="title-3 m-b-30">
+        <i class="fas fa-newspaper"></i>Gestion Catégories</h3>
+
+    <div class="table-responsive m-b-40">
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    
+                </div>
+            </div>
+            <div class="table-data__tool-right">
+                <a href="{{ path('app_category_reclamation_new') }}">
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>
+                        Ajouter Catégorie
+                    </button>
+                    &nbsp;
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+        <table class="table table-borderless table-data3">
+            <thead>
+                <tr>
+                    <td style="color: white;"><strong style="margin-left:30px">Nom</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Description</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Priorité</strong></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category_reclamation in category_reclamations %}
+                <tr>
+                    <td>{{ category_reclamation.nomCategory }}</td>
+                    <td>{{ category_reclamation.descriptionCategory|striptags|slice(0, 38) }}</td>
+                    <td>{{ category_reclamation.prioriteCategory }}</td>
+                    <td>
+                        <a href="{{ path('app_category_reclamation_show', {'id': category_reclamation.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+                                <i class="zmdi zmdi-eye"></i>                               
+                            </button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a href="{{ path('app_category_reclamation_edit', {'id': category_reclamation.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                                <i class="zmdi zmdi-edit"></i>                          
+                            </button>
+                        </a>
+                        {{ include('category_reclamation/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Pas des catégories.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

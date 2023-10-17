@@ -1,0 +1,55 @@
+
+<div class="card-body card-block">
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.materiel,"Matériel :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.materiel,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.materiel) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.materiel) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.fournisseur,"Fournisseur :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.fournisseur,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.fournisseur) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.fournisseur) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.dateArrivageCharge,"Date Arrivage :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.dateArrivageCharge,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.dateArrivageCharge) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.dateArrivageCharge) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.quantiteCharge,"Quantité :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.quantiteCharge,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.quantiteCharge) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.quantiteCharge) }}</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_charge_index') }}">Consulter Liste</a></button>
+    </div>
+    {{ form_end(form) }}
+    </div>
+

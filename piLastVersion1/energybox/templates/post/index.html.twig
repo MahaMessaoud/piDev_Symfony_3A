@@ -1,0 +1,121 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Blog{% endblock %}
+{% block page %}Welcome to our blog{% endblock %}
+{% block body %}
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="blog_left_sidebar">
+                        {% for post in postss %}
+                            <article class="blog_item">
+                                <div class="blog_item_img">
+                                    {% set img = post.image %}
+                                    <img class="card-img rounded-0" src="{{ asset(img) }}" alt="">
+                                    <a href="{{ path('app_post_show', {'id': post.id}) }}" class="blog_item_date">
+                                        <h3>{{ post.datePost ? post.datePost|date('d M Y') : '' }}</h3>
+
+                                    </a>
+                                </div>
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="">
+                                        <h2 class="blog-head" style="color: #2d2d2d;">{{ post.title }}</h2>
+                                    </a>
+                                    <p>{{ post.details }}</p>
+                                    <ul class="blog-info-link">
+                                       {% set l=post.comments|length %}
+                                        {% if l==1 %}
+                                        <li><i class="fa fa-comments"></i>{{ post.comments|length }} comment</li>
+                                        {% else %}
+                                            <li><i class="fa fa-comments"></i>{{ post.comments|length }} comments</li>
+                                            {% endif %}
+
+                                            </ul>
+                                </div>
+                            </article>
+                        {% else %}
+                        <div class="col-lg-12 mb-5 mb-lg-0">
+                            <div class="blog_left_sidebar">
+                                <h5 class="text-dark w-100"><strong>no records found</strong></h5>
+                            </div></div>
+                        {% endfor %}
+                        <div style="font-size: 18px;padding-left:5px; color: #000000; 
+   
+  width: 15%;">
+                        {{ knp_pagination_render(postss) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+
+                                <a class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit" href="{{ path('app_post_new') }}"><strong>Create New Post</strong></a>
+                            </form>
+                        </aside>
+                        <aside class="single_sidebar_widget search_widget">
+                            <form action="#">
+                                <div class="form-group">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" id="searchInput"placeholder='Search Keyword'
+                                               onfocus="this.placeholder = ''"
+                                               onblur="this.placeholder = 'Search Keyword'">
+                                        <script>
+                                            function filterTable() {
+                                                const filter = document.getElementById('searchInput').value.toUpperCase();
+                                                const rows = document.querySelectorAll('table tr');
+                                                for (let i = 1; i < rows.length; i++) {
+                                                    const cols = rows[i].querySelectorAll('td');
+                                                    let visible = false;
+                                                    for (let j = 0; j < cols.length; j++) {
+                                                        const cell = cols[j];
+                                                        if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+                                                            visible = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                    rows[i].style.display = visible ? '' : 'none';
+                                                }
+                                            }
+                                            document.getElementById('searchInput').addEventListener('keyup', filterTable);
+                                        </script>
+                                        <div class="input-group-append">
+                                            <button class="btns" type="button"><i class="ti-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form></aside>
+
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title" style="color: #2d2d2d;">Recent Posts</h3>
+                            {% set sortedPosts = posts|sort((a, b) => a.id < b.id ? 1 : -1) %}
+                            {% for post in sortedPosts|slice(0, 5) %}
+                            <div class="media post_item">
+                                {% set img = post.image %}
+                                <img style="width: 90px" src="{{ asset(img) }}" alt="post">
+                                <div class="media-body">
+                                    <a href="{{ path('app_post_show', {'id': post.id}) }}">
+                                        <h3 style="color: #2d2d2d;">{{ post.title }}</h3>
+                                    </a>
+                                    <p>{{ post.datePost ? post.datePost|date('M d, Y') : '' }}</p>
+                                </div>
+                            </div>
+
+                                {% else %}
+                            <div class="media post_item">
+                                    <h5 class="text-dark w-100"><strong>no records found</strong></h5>
+                            </div>
+                            {% endfor %}
+
+
+
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

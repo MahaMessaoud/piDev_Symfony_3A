@@ -1,0 +1,10 @@
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/style.css') }}">
+
+{%endblock %}
+{% block body %}
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
+

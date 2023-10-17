@@ -1,0 +1,43 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Cours | {{ cour.nomCours }}{% endblock %}
+
+{% block body %}
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td><strong>Nom :</strong></td>
+            <td>{{ cour.nomCours }}</td>
+        </tr>
+        <tr>
+            <td><strong>Résponsable :</strong></td>
+            <td>{{ cour.nomCoach}}</td>
+        </tr>
+        <tr>
+            <td><strong>Age Minimale :</strong></td>
+            <td>{{ cour.ageMinCours}}</td>
+        </tr>
+        <tr>
+            <td><strong>Prix :</strong></td>
+            <td>{{ cour.prixCours }}</td>
+        </tr>
+        <tr>
+            <td><strong>Activités :</strong></td>
+            <td>{{ cour.activites|join(' | ') }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<strong>Plus de Detail :</strong>
+<br>
+<p>{{ cour.descriptionCours}}</p>
+<br>
+ 
+<div align="center" class="card-footer">
+    <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_cours_crud_index') }}">Retour à la Liste</a></button>
+</div>
+                                
+    
+{% endblock %}

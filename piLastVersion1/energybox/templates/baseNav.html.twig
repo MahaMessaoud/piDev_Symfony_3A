@@ -1,0 +1,210 @@
+{% block stylesheets %}
+    {#    {{ encore_entry_link_tags('app') }} #}
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/slicknav.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/gijgo.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/animated-headline.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/themify-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('./frontOffice/css/style.css') }}">
+
+    <style>
+        .carousel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .carousel img {
+            width: 100px;
+            height: 100px;
+            margin: 0 20px;
+            opacity: 0.5;
+            transition: opacity 0.5s ease-in-out;
+            animation: carousel 8s infinite;
+        }
+
+        .carousel img:hover {
+            opacity: 1;
+        }
+
+        @keyframes carousel {
+            0% {
+                transform: translateX(0);
+            }
+            20% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-120%);
+            }
+            45% {
+                transform: translateX(-120%);
+            }
+            50% {
+                transform: translateX(-240%);
+            }
+            70% {
+                transform: translateX(-240%);
+            }
+            75% {
+                transform: translateX(-360%);
+            }
+            95% {
+                transform: translateX(-360%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+
+{% endblock %}
+<header>
+    <!--? Header Start -->
+    <!--class header area kenet m3aha espace "header-transparent"-->
+    <div class="main-header header-sticky" >
+        <div class="container-fluid" >
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-xl-2 col-lg-2 col-md-1">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="{{ asset('./frontOffice/img/logo/LogoGymWhite.png') }}" alt="" style="height: 180px; width: 190px; margin-bottom: -10px;">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xl-10 col-lg-10 col-md-10">
+                    <div class="menu-main d-flex align-items-center justify-content-end">
+                        <!-- Main-menu -->
+                        <div class="main-menu f-right d-none d-lg-block">
+                            <nav>
+                                <ul id="navigation">
+                                    <li><a href="{{ path('app_home_front') }}">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a>Competitions</a>
+                                        <ul class="submenu">
+                                            <li><a href="{{path('app_competition_showFront')}}">Compétition Disponible</a></li>
+                                            <li><a href="{{path('app_competition_nonDispo')}}">Compétitions non disponible</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Salle</a>
+                                        <ul class="submenu">
+                                            <li><a href="/planning/crud/viewPlanning">Planning</a></li>
+                                            <li><a href="/cours/crud/viewCours">Cours</a></li>
+                                            <li><a href="/activite/crud/viewActivite">Activités</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{path('app_pack_tryindex') }}">Abonnements</a></li>
+                                    <li><a href="/our/menu">Restaurants</a></li>
+                                    <li><a href="{{path('app_post_index') }}">Blog</a></li>
+                                    <li><a href="">Contact</a></li>
+                                    {% if app.user %}
+                                    <li><a href="#"><i class="fa fa-user"></i></a>
+                                        <ul class="submenu">
+                                            <li>
+                                                <a role="button"
+                                                   id="dropdownMenuLink"
+                                                   data-mdb-toggle="dropdown"
+                                                   aria-expanded="false">{{ app.user.username }}</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="{{ path('app_abonne_front_profil') }}">My Account</a></li>
+                                            <li><a class="dropdown-item" href="#">My Pack</a></li>
+                                            <li><a class="dropdown-item" href="{{ path('app_logout') }}" style="color: white;"><b>Logout</b></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        {% else %}
+                                    <li><a href="{{ path('app_login') }}"><i class="fa fa-sign-in"></i></a>
+                                        {% endif %}
+
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<!--<div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center"></div>
+</div>-->
+{% block body %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('./frontOffice/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{{ asset('./frontOffice/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/popper.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/bootstrap.min.js') }}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{{ asset('./frontOffice/js/jquery.slicknav.min.js') }}"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{{ asset('./frontOffice/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/slick.min.js') }}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{{ asset('./frontOffice/js/wow.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/animated.headline.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.magnific-popup.js') }}"></script>
+
+    <!-- Date Picker -->
+    <script src="{{ asset('./frontOffice/js/gijgo.min.js') }}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{{ asset('./frontOffice/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.sticky.js') }}"></script>
+
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{{ asset('./frontOffice/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/waypoints.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/hover-direction-snake.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <!-- contact js -->
+    <script src="{{ asset('./frontOffice/js/contact.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.form.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/mail-script.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/jquery.ajaxchimp.min.js') }}"></script>
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="{{ asset('./frontOffice/js/plugins.js') }}"></script>
+    <script src="{{ asset('./frontOffice/js/main.js') }}"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"></script>
+    {#   {{ encore_entry_script_tags('app') }} #}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Réclamation {% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Nom</strong></td>
+                <td>{{ reclamation.nomUserReclamation }}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ reclamation.emailUserReclamation }}</td>
+            </tr>
+            <tr>
+                <td><strong>Date</strong></td>
+                <td>{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <td><strong>Objet</strong></td>
+                <td>{{ reclamation.objetReclamation }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <strong>Detail de Réclamation :</strong>
+    <br>
+    <p>{{ reclamation.texteReclamation }}</p>
+    <br>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_reclamation_index') }}">Retour à la liste</a></button>
+    </div>
+
+    
+{% endblock %}

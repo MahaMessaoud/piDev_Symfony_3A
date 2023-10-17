@@ -1,0 +1,38 @@
+{#
+{{ form_start(form,{'attr': {'novalidate':'novalidate'}}) }}
+
+
+
+    {{form_label(form.date,"date du plat:")}}
+    {{form_widget(form.date,{'attr':{'class':'form-control'}})}}
+    {% if form_errors(form.date) is not empty %}
+        <div class="alert alert-danger">
+            {{form_errors(form.date)}}
+        </div>
+    {% endif %}
+
+
+
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+#}
+{% block body %}
+    {{ form_start(form) }}
+
+    <div class="form-group row">
+        {{ form_label(form.date, 'Date du plat:', {'label_attr': {'class': 'col-sm-2 col-form-label'}}) }}
+        <div class="col-sm-10">
+            {{ form_widget(form.date, {'attr': {'class': 'form-control datepicker', 'type': 'date'}}) }}
+            {% if form_errors(form.date) is not empty %}
+                <div class="alert alert-danger">
+                    {{ form_errors(form.date) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+  {#   <button class="btn">{{ button_label|default('Enregistrer') }}</button>#}
+
+    {{ form_end(form) }}
+
+{% endblock %}

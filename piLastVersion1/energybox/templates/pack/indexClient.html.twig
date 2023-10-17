@@ -1,0 +1,71 @@
+
+
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox | Pack{% endblock %}
+
+{% block tache %}
+    <main>
+        <!--? Hero Start -->
+        <div class="slider-area2">
+            <div class="slider-height2 d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap hero-cap2 pt-70 text-center">
+
+            <h2>Pack</h2>
+             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero End -->
+        <!--? Blog Area Start-->
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
+                        <table class="table">
+            <thead>
+            <tr>
+                
+                <th>Durée Pack</th>
+                <th>Type Pack</th>
+                <th>Montant Pack</th>
+                <th>actions</th>
+            </tr>
+         </thead>
+        <tbody>
+        {% for pack in packs %}
+            <tr>
+             
+                <td>{{ pack.dureePack }}</td>
+                <td>{{ pack.typePack }}</td>
+                <td>{{ pack.montantPack }}</td>
+                <td>
+                
+                    <a href="{{ path('app_pack_show', {'id': pack.id}) }}">show</a>
+                    <a href="{{ path('app_pack_edit', {'id': pack.id}) }}">edit</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+                     
+                    </div>
+                </div>                
+            </div>
+        </section>
+    </main>
+{% endblock %}

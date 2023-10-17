@@ -1,0 +1,48 @@
+{#
+% extends 'base.html.twig' %}
+
+{% block title %}Email{% endblock %}
+
+{% block body %}
+Email envoyé avec succés
+{% endblock %}
+#}
+
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Email{% endblock %}
+
+{% block body %}
+    <style>
+        .alert {
+            padding: 20px;
+            border-radius: 0;
+            font-size: 24px;
+        }
+
+        svg {
+            margin: 30px 0;
+        }
+        .alert-success {
+            background-color: white;
+        }
+        .alert-success h2 {
+            color: #8B0000;
+        }
+
+
+    </style>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <div class="alert alert-success" role="alert" >
+                    <h2>Email envoyé avec succès</h2>
+                </div>
+                <svg width="100" height="100">
+                    <path fill="none" stroke="#8B0000" stroke-width="10" d="M25 50 L40 65 L75 25"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('app_reservation_index') }}" class="fa fa-arrow-left">Retourner</a>
+{% endblock %}

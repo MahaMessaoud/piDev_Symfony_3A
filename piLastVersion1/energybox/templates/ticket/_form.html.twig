@@ -1,0 +1,36 @@
+
+<div class="card-body card-block">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.descriptionTicket,"Description:") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.descriptionTicket,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.descriptionTicket) is not empty %}
+                        <small>
+                        <div class="alert alert-danger">{{ form_errors(form.descriptionTicket) }}</div>
+                        </small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.competition,"Nom de la competition:") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.competition,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.competition) is not empty %}
+                        <small>
+                        <div class="alert alert-danger">{{ form_errors(form.competition) }}</div>
+                        </small>
+                    {% endif %}
+                </div>
+            </div>
+        
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Enregistrer') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a href="{{ path('app_ticket_index') }}" style="color:white;">Consulter la Liste</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>

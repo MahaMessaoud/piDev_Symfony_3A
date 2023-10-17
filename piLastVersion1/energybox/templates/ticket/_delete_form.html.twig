@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_ticket_delete', {'id': ticket.id}) }}" onsubmit="return confirm('Est ce que vous êtes sur que vous souhaitez suprrimer cette ticket ??');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ ticket.id) }}">
+    <button style="margin-top:-18px; margin-right:53px" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Supprimer">
+        <i class="zmdi zmdi-delete"></i>
+    </button>
+</form>

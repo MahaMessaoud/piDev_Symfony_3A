@@ -1,0 +1,11 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+reset_password_reset:
+  path: /reset-password/reset
+  controller: App\Controller\ResetPasswordController::forgotPassword
+  methods: [GET]
+send_sms:
+    path: /send-sms
+    controller: App\Controller\TwiliosmsController::sendSmsAction

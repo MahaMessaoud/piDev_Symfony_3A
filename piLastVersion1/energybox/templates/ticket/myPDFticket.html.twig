@@ -1,0 +1,70 @@
+<head>
+    <style>
+        /**
+            Set the margins of the page to 0, so the footer and the header
+            can be of the full height and width !
+         **/
+        @page {
+            margin: 0cm 0cm;
+        }
+        /** Define now the real margins of every page in the PDF **/
+        body {
+            margin-top: 3.5cm;
+            margin-left: 1cm;
+            margin-right: 1cm;
+            margin-bottom: 2cm;
+        }
+        /** Define the header rules **/
+        header {
+            position: fixed;
+            top: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 3cm;
+        }
+        /** Define the footer rules **/
+        footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 2cm;
+        }
+    </style>
+</head>
+<body>
+<!-- Define header and footer blocks before your content -->
+<header>
+    <div class="intro_price" style="color: red;margin-left: 10px;margin-top: 10px"><b>EnergyBox</b></div>
+    <div style="font-size: 15px;margin-left: 10px">  Adresse : Esprit Technopole Ghazela Ariana</div>
+    <div style="font-size: 15px;margin-left: 10px">  Numéro : +216 500 123</div>
+    <div style="font-size: 15px;margin-left: 10px">  E-mail : EnergyBox@gmail.com</div>
+
+    <div><img src="{{ asset('/img/logo/logoGymBlack.png') }}" alt="Logo" style="width: 200px;height: 120px;margin-left: 580px;margin-top: -80px"></div>
+    <hr class="cmDEY eufYP cDHZq" style="color: dimgray;width: 750px;"> 
+</header>
+
+<footer>
+</footer>
+{% block body %}
+
+            <section class="services-area pt-100 pb-150 section-bg" data-background="{{ asset('img/logo/LogoGymBlack.png')}}" style="background-image: url(&quot;assets/img/gallery/section_bg01.png);">            
+                <div class="container">
+                    <div class="row">   
+                        <div class="cat-cap">
+                            <div class="about-caption">
+                                <center>
+                                <div class="section-tittle section-tittle3 mb-35">
+                                    <h1><span>Détail de votre ticket</span></h1>
+                                    <div class="mb-65 pera-bottom">
+                                        <b>Ticket de Competition:</b> <p>{{ ticket.competition.nomCompetition }}</p>
+                                        <b>Description de la ticket:</b> <p>{{ ticket.descriptionTicket }}</p>
+                                    
+                                
+        <div style="margin-left: 450px;font-size: 15px" align="center"></div>
+        <br>
+        <div style="margin-left: 550px;font-size: 15px"> Le : {{ "now"|date("m/d/Y")}}  </div>
+        </div>
+<img src="{{ ('frontOffice/img/logo/LogoGymWhite.png') }}" style="width: 150px;height: 50px;margin-left: 520px" alt="">
+</div>
+{% endblock %}

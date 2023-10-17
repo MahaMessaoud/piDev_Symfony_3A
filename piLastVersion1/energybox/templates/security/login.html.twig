@@ -1,0 +1,104 @@
+{% block stylesheets %}
+	<meta
+	name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link href="{{ asset('./BackOffice/css/font-face.css') }}" rel="stylesheet" media="all">
+
+	<link
+	rel="icon" type="image/png" href="{{ asset('./Loginassets/images/icons/favicon.ico') }}"/>
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/bootstrap/css/bootstrap.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/animate/animate.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/css-hamburgers/hamburgers.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/animsition/css/animsition.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/select2/select2.min.css') }}">
+	<!--===============================================================================================-->
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/vendor/daterangepicker/daterangepicker.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/css/util.css') }}">
+	<link
+	rel="stylesheet" type="text/css" href="{{ asset('./Loginassets/css/main.css') }}">
+<!--===============================================================================================-->
+{% endblock %}
+
+{% block body %}
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('./frontOffice/img/gallery/gallery1.png'); opacity: 1;">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					ENERGYBOX<br>____________<br><br>
+					Account Login
+				</span>
+
+				<form class="login100-form validate-form p-b-33 p-t-5" id="contact-form" method="POST">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					<div class="wrap-input100 validate-input" data-validate="Enter username">
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control input100" autocomplete="email" placeholder="E-mail"/>
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input type="password" name="password" id="inputPassword" class="form-control input100" autocomplete="current-password" placeholder="Password"/>
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<div class="container-login100-form-btn m-t-32 submit-info">
+						<button class="login100-form-btn" type="submit" style="margin-left: -50px;">
+							Login
+						</button>
+
+						{#   <button  type="submit">
+																		                            <a href="{{ path('app_registerChoices') }}" style="color: #720000">choisir le type!</a>
+																		                        </button>#}
+						<button type="submit" style="margin-top: 50px; margin-left: -200px;">
+							<a href=" {{ path ('app_forgot_password_request') }}" style="color: #720000">forgot password!</a><br>
+							<a href=" {{ path ('app_registerChoices') }}" style="color: #720000">enregistrer selon votre type!</a><br>
+
+						</button>
+					</div>
+				</form>
+				<a href="{{ path('app_chat') }}" style="color: #720000">
+				
+				<img src="{{ asset('./Loginassets/images/robot.png') }}" style="margin-top:40px;position:absolute;margin-left:850px;">
+			</a>
+		</div>
+	</div>
+</div>
+<div id="dropDownSelect1"></div>
+<!-- chatbot-->{% endblock %}{% block javascripts %}
+
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/bootstrap/js/popper.js') }}"></script>
+<script src="{{ asset('./Loginassets/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/daterangepicker/moment.min.js') }}"></script>
+<script src="{{ asset('./Loginassets/vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('./Loginassets/js/main.js') }}"></script>{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Reservations{% endblock %}
+
+{% block body %}
+
+<div class="map-data m-b-40">                                    
+    <h3 class="title-3 m-b-30">
+        <i class="fas fa-table">
+        </i>Gestion Réservations</h3>
+    <div class="table-responsive m-b-40">
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">Trier Par</option>
+                        <option value="">Nom</option>
+                        <option value="">Résponsable</option>
+                        <option value="">Age</option>
+                        <option value="">Prix</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <button class="au-btn-filter"><i class="zmdi zmdi-filter-list"></i>filters</button>
+            </div>
+            <div class="table-data__tool-right">
+                <a href="{{ path('app_reclamation_stat') }}">
+                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="fas fa-chart-bar"></i>
+                        Statistiques
+                    </button>
+                    &nbsp;
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-borderless table-data3">
+        <thead>
+            <tr>
+                <td style="color: white;"><strong style="margin-left:30px">Date</strong></td>
+                <td style="color: white;"><strong style="margin-left:30px">User</strong></td>
+                <td style="color: white;"><strong style="margin-left:30px">Plat</strong></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in reservations %}
+            <tr>
+
+                <td>{{ i.date ? i.date|date('Y-m-d') : '' }}</td>
+                <td>
+                    {% for j in i.clients %}
+                        {{ j.username }}
+                    {% endfor %}
+                </td>
+                <td>{{ i.idplat }}</td>
+
+                <td>
+                    <a href="{{ path('app_sms', {'id': i.id}) }}">
+                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="SMS">
+                            <i class="zmdi zmdi-phone-end"></i>                              
+                        </button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="{{ path('app_reservation_edit', {'id': i.id}) }}">
+                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                            <i class="zmdi zmdi-edit"></i>                          
+                        </button>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="{{ path('app_mail_ch') }}">
+                        <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Email">
+                            <i class="zmdi zmdi-email"></i>                          
+                        </button>
+                    </a>
+                    
+                    {# <div class="btn-group" role="group">
+                        <a href="{{ path('app_reservation_edit', {'id': i.id}) }}" class="btn btn-danger"><i class="fas fa-trash"></i>Supprimer</a>
+                        <a href="{{ path('app_sms',{'id':i.id}) }}" class="btn btn-outline-dark"><i class="fas fa-envelope"></i>Envoyé un sms</a><br>
+                        <a href="{{ path('app_mail_ch') }}"  class="btn btn-outline-dark"><i class="fas fa-envelope"></i>Envoyer Mail</a>
+                    </div> #}
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Pas de réservations.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        {# Pagination #}
+        <style>
+            .pagination-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+            }
+            .pagination a, .pagination span {
+                display: inline-block;
+                padding: 5px 10px;
+                margin-right: 5px;
+                border-radius: 5px;
+                text-decoration: none;
+                color: #333;
+                background-color: #eee;
+            }
+            .pagination .active {
+                background-color: #007bff;
+                color: #fff;
+            }
+        </style>
+        <div class="pagination-container" class="fas fa-chevron-circle-right" style="font-size: 18px;">
+            {{ knp_pagination_render(reservations) }}
+        </div>
+        {# Pagination #}
+{% endblock %}

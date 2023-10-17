@@ -1,0 +1,62 @@
+{% extends 'baseFront.html.twig' %}
+
+
+{% block title %}EnergyBox | Cours{% endblock %}
+
+{% block body %}
+<!--? Hero Start -->
+<div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap hero-cap2 pt-70 text-center">
+                        <h2>Cours</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+<section class="services-area pt-100 pb-150">
+    <section class="wantToWork-area w-padding">
+        <div class="container">
+            <div class="row align-items-end justify-content-between">
+                <div class="col-lg-6 col-md-10 col-sm-10">
+                    <div class="section-tittle">
+                        <span>Notre Cours</span>
+                        <h2>Séléctionnez le cours que vous avez besoin</h2>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3">
+                    <a href="/planning/crud/viewPlanning" class="btn wantToWork-btn f-right">Consultez notre Planning</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            {% for cour in cours %}
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="single-cat single-cat2 text-center mb-50">
+                    <div class="cat-icon">
+                        <i class="flaticon-fitness"></i>
+                    </div>
+                    <div class="cat-cap">
+                        <h1><a href="{{ path('app_cours_crud_show_front', {'id': cour.id}) }}">{{ cour.nomCours }}</a></h1>
+                        <p>Coach {{cour.nomCoach }}</p>
+                        <p>{{ cour.prixCours }} DT</p>
+                    </div>
+                    <div class="img-cap">
+                        <a href="{{ path('app_cours_crud_show_front', {'id': cour.id}) }}" class="">Discover More<i class="ti-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+        
+{% endblock %}

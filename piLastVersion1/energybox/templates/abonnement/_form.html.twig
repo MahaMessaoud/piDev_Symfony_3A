@@ -1,0 +1,53 @@
+
+    <div class="card-body card-block">
+    {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.pack,"Type d'abonnement") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.pack,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.pack) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.pack) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.codePromo,"Code Promo") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.codePromo,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.codePromo) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.codePromo) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.user,"Utilisateur") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.user,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.user) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.user) }}</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_abonnement_index') }}">Consulter Liste</a></button>
+    </div>
+    {{ form_end(form) }}
+    </div>
+        
+        
+        
+        
+        
+    
+
+ 
+                       
+                       

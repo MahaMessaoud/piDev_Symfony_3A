@@ -1,0 +1,37 @@
+ {% extends 'baseBack.html.twig' %} 
+ {% block title %}EnergyBox | Abonnement {% endblock %} 
+
+
+{% block body %}
+   
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Type Abonnement</th>
+                <td>{{ abonnement.pack.typePack  }}</td>
+            </tr>
+            
+            <tr>
+                <th>Durée Abonnement</th>
+                <td>{{ abonnement.pack.dureePack }}</td>
+            </tr>
+            <tr>
+                <th>Date Achat</th>
+                <td>{{ abonnement.dateAchat ? abonnement.dateAchat|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date Fin</th>
+                <td>{{ abonnement.dateFin ? abonnement.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Etat Abonnement</th>
+                <td>{{ abonnement.etatAbonnement }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_abonnement_index') }}">Retour à la Liste</a></button>
+    </div>
+                               
+{% endblock %}

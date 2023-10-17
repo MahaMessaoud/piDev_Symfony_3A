@@ -1,0 +1,45 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Réclamation {% endblock %}
+
+{% block body %}
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Réclamation de Mr</strong></td>
+                <td>{{ reponse.reclamation.nomUserReclamation}}</td>
+            </tr>
+            <tr>
+                <td><strong>Objet</strong></td>
+                <td>{{ reponse.objetReponse }}</td>
+            </tr>
+            {% if reponse.pieceJointe is not empty %}
+            <tr>
+                <td><strong>Piéce Jointe</strong></td>
+                <td>{{ reponse.pieceJointe }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td><strong>Piéce Jointe</strong></td>
+                <td>Pas de Piece Jointe</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td><strong>Date</strong></td>
+                <td>{{ reponse.dateReponse ? reponse.dateReponse|date('Y-m-d') : '' }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <br>
+    <strong>Contenu de Réponse :</strong>
+    <br>
+    <p>{{ reponse.contenuReponse }}</p>
+    <br>
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_reponse_index') }}">Retour à la liste</a></button>
+    </div>
+
+{% endblock %}

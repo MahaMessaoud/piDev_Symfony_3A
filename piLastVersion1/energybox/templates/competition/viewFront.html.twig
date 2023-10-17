@@ -1,0 +1,91 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %} EnergyBox | Competitions {% endblock %}
+
+{% block body %}
+
+<div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap hero-cap2 pt-70 text-center">
+                        <h2>Compétitions</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="services-area pt-100 pb-150">
+    <section class="wantToWork-area w-padding">
+        <div class="container">
+            <div class="row align-items-end justify-content-between">
+                <div class="col-lg-6 col-md-10 col-sm-10">
+                    <div class="section-tittle">
+                        <span>Notre Compétitions</span>
+                        <h2>SÉLÉCTIONNEZ LA COMPETITION QUE VOUS PLAISEZ</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            {% for competition in competitions %}
+			<div class="col-lg-4 col-md-4 col-sm-6">
+				<div class="single-cat single-cat2 text-center mb-50">
+					<div class="cat-icon">
+						<i class="flaticon-fitness"></i>
+					</div>
+					<div class="cat-cap">
+						<h1><a href="{{ path('app_competition_Front', {'id': competition.id}) }}">{{ competition.nomCompetition }}</a></h1>
+						<b>FraisCompetition En Dinar:</b>
+						<p>{{ competition.fraisCompetition }}</p>
+						<b>DateCompetition:</b>					
+						<p>{{ competition.dateCompetition ? competition.dateCompetition|date('Y-m-d') : '' }}</p>
+						<b>EtatCompetition:</b>
+						<p>{{ competition.etatCompetition }}</p>
+						<b>NbrMaxInscrit:</b>					
+						<p>{{ competition.nbrMaxInscrit }}</p>
+						<div class="flex justify-center align-items flex-row">
+							<div class="footer-social">
+								<a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url(path('app_competition_reserver', {id: competition.id})) }}" class="share facebook">
+									<svg class="w-3 h-3 text-blue-600 fill-current mr-4 icon-facebook" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="width: 20px; height: 20px;">
+										<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="img-cap">
+						<a href="{{ path('app_competition_reserver', {'id': competition.id}) }}" class="">Réserver
+							<i class="ti-arrow-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+        </div>
+		<div class="col-12 d-flex justify-content-center">
+            {% do competitions.setPageRange(10) %}
+            {{knp_pagination_render(competitions, 'pagination.html.twig')}}
+		</div>
+    </div>
+</section>
+
+			
+		
+			{# recherche #}	
+			<section class="services-area pt-100 pb-150 section-bg" data-background="{{ asset('frontOffice/img/gallery/section_bg01.png')}}" style="background-image: url(&quot;assets/img/gallery/section_bg01.png&quot;);">
+				<div class="container">
+					<div class="row">
+						
+						{# {{ knp_pagination_render(competitions) }} #}
+
+					</div>
+					
+				</section>
+
+{% endblock %}

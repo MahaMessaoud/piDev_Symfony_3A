@@ -1,0 +1,41 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+<div align="center">
+   {% if app.user %}
+            {% set img=app.user.image %}
+        <img src="{{ asset(img) }}" style="height: 350px;" alt="Erreur Import.">
+    </div>
+     <br>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td> {{ app.user.email }} </td>
+            </tr>
+            <tr>
+                <td><strong>username</strong></td>
+                <td>{{ app.user.username }}</td>
+            </tr>
+            <tr>
+                <td><strong>numTel</strong></td>
+                <td>{{ app.user.numTel }}</td>
+            </tr>
+            <tr>
+                <td><strong>Date de naissance</strong></td>
+                <td>{{ app.user.dateN? app.user.dateN|date('Y-m-d') : ''  }}</td>
+           </tbody> 
+    </table>
+    <button style="background-color:#720000;"  class="au-btn">
+                    <a href=" {{ path('app_admin_edit', {'id': app.user.id}) }} " style="color:white;">edit</a>
+                    <!--l methode mta3 l edit leezm tetkhdem fi blasa okhra mch fl crud -->
+                </button> </tr>
+    
+              
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endif %}
+        
+{% endblock %}

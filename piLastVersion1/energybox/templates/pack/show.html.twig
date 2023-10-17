@@ -1,0 +1,30 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Pack | {{pack.typePack}} {% endblock %}
+
+{% block body %}
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><strong>Durée Pack</strong></td>
+					<td>{{ pack.dureePack }}</td>
+				</tr>
+				<tr>
+					<td><strong>TypePack</strong></td>
+					<td>{{ pack.typePack }}</td>
+				</tr>
+
+				<tr>
+					<td><strong>MontantPack</strong></td>
+					<td>{{ pack.montantPack }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<div align="center" class="card-footer">
+			<button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_pack_index') }}">Retour à la Liste</a></button>
+		</div>
+		
+		
+{% endblock %}

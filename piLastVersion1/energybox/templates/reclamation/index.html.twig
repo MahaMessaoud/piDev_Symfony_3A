@@ -1,0 +1,98 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Réclamation {% endblock %}
+
+{% block body %}
+<div class="map-data m-b-40">                   
+    <h3 class="title-3 m-b-30">
+        <i class="fas fa-newspaper"></i>Gestion Réclamations</h3>
+
+    <div class="table-responsive m-b-40">
+        <div class="table-data__tool">
+            <div class="table-data__tool-left">
+                <div class="rs-select2--light rs-select2--md">
+                    
+                </div>
+            </div>
+            <div class="table-data__tool-right">
+                
+            </div>
+        </div>
+    </div>
+<input type="text" class="form-control" id="searchInput" placeholder="Search&hellip;">
+    <br>
+        <table class="table table-borderless table-data3">
+            <thead>
+                <tr>
+                    <td style="color: white;"><strong style="margin-left:30px">Nom</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Email</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Objet</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Texte</strong></td>
+                    <td style="color: white;"><strong style="margin-left:30px">Date</strong></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reclamation in reclamations %}
+                <tr>
+                    <td>{{ reclamation.nomUserReclamation|upper }}</td>
+                    <td>{{ reclamation.emailUserReclamation|striptags|slice(0, 13) }}</td>
+                    <td>{{ reclamation.objetReclamation|striptags|slice(0, 10) }}</td>
+                    <td>{{ reclamation.texteReclamation|striptags|slice(0, 10) }}</td>
+                    <td>{{ reclamation.dateReclamation ? reclamation.dateReclamation|date('Y-m-d') : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_reclamation_show', {'id': reclamation.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+                                <i class="zmdi zmdi-eye"></i>                               
+                            </button>
+                        </a>
+                        &nbsp;&nbsp;
+                        {# <a href="{{ path('app_reclamation_edit', {'id': reclamation.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                                <i class="zmdi zmdi-edit"></i>                          
+                            </button>
+                        </a> #}
+                        {{ include('reclamation/_delete_form.html.twig') }}
+                        
+                        <a href="{{ path('app_reponse_new', {'id': reclamation.id}) }}">
+                            <button style="margin-right:57px;margin-top:-17px;" class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Répondre">
+                                <i class="zmdi zmdi-mail-reply"></i>                          
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">Pas de réclamations.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div align="center" class="card-footer">
+            <br>
+            <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_category_reclamation_index') }}">Consulter Catégorie</a></button>
+            <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i><a style="color:white;" href="{{ path('app_category_reclamation_new') }}">Ajouter Catégorie</a></button>
+        </div>
+    </div>
+</div>
+
+<script>
+						function filterTable() {
+const filter = document.getElementById('searchInput').value.toUpperCase();
+const rows = document.querySelectorAll('table tr');
+for (let i = 1; i < rows.length; i++) {
+const cols = rows[i].querySelectorAll('td');
+let visible = false;
+for (let j = 0; j < cols.length; j++) {
+const cell = cols[j];
+if (cell.innerText.toUpperCase().indexOf(filter) > -1) {
+visible = true;
+break;
+}
+}
+rows[i].style.display = visible ? '' : 'none';
+}
+}
+document.getElementById('searchInput').addEventListener('keyup', filterTable);
+					</script>
+{% endblock %}

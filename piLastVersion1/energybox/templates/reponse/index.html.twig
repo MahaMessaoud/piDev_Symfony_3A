@@ -1,0 +1,56 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Réponse {% endblock %}
+
+{% block body %}
+<div class="map-data m-b-40">                   
+    <h3 class="title-3 m-b-30">
+        <i class="fas fa-newspaper"></i>Gestion Réponses</h3>
+
+    <div class="table-responsive m-b-40">
+        <table class="table table-borderless table-data3">
+            <thead>
+                <tr>
+                    <td style="color: white;"><strong style="margin-left:10px">Réclamation de</strong></td>
+                    <td style="color: white;"><strong style="margin-left:40">Objet</strong></td>
+                    <td style="color: white;"><strong style="margin-left:40">Date</strong></td>
+                    <td style="color: white;"><strong style="margin-left:40">Contenu</strong></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for reponse in reponses %}
+                <tr>
+                    <td><div style="margin-left:30px;">{{ reponse.reclamation.nomUserReclamation|upper}}</div></td>
+                    <td>{{ reponse.objetReponse|striptags|slice(0, 15) }}</td>
+                    <td>{{ reponse.dateReponse ? reponse.dateReponse|date('Y-m-d') : '' }}</td>
+                    <td>{{ reponse.contenuReponse|striptags|slice(0, 44) }}</td>
+                    <td>
+                        <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Afficher">
+                                <i class="zmdi zmdi-eye"></i>                               
+                            </button>
+                        </a>
+                        &nbsp;&nbsp;
+                        <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}">
+                            <button class="item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Modifier">
+                                <i class="zmdi zmdi-edit"></i>                          
+                            </button>
+                        </a>
+                        {{ include('reponse/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">Pas de réponses sur les réclamations.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div align="center" class="card-footer">
+            <br>
+            <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_reclamation_index') }}">Consulter Réclamations</a></button>
+        </div>
+    </div>
+</div>
+{% endblock %}

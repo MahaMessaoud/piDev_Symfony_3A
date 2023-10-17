@@ -1,0 +1,58 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}EnergyBox |Competition{% endblock %}
+
+{% block body %}
+
+<div class="slider-area2">
+    <div class="slider-height2 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="hero-cap hero-cap2 pt-70 text-center">
+                        <h2>Votre Ticket</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+<!--? Blog Area Start-->
+<section class="services-area pt-100 pb-150">
+    <section class="wantToWork-area w-padding">
+        <div class="container">
+            <div class="row align-items-end justify-content-between">
+                <div class="col-lg-6 col-md-10 col-sm-10">
+                    <div class="section-tittle">
+                        <span>Votre Ticket</span> 
+                        <h2>Repoussez vos limites avec nous - chaque entraînement compte!</h2>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3">
+                    <a href="{{ path('app_competition_showFront') }}" class="btn wantToWork-btn f-right">Voir Les abonnement</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">       
+                <a class="d-inline-block">
+                    <h3>Ticket de Competition</h3>
+                    <p>{{ ticket.competition.nomCompetition }}</p>
+                </a>
+                <br>
+                <a class="d-inline-block">
+                    <h3>Description de la ticket</h3>
+                    <p>{{ ticket.descriptionTicket }}</p>
+                </a> 
+            </div>
+            <div align="left">
+                <br><br><br>
+                <a href="{{ path('app_ticket_pdf', {'id': ticket.id}) }}" class="btn">Télécharger</a>
+            </div>
+        </div>                
+    </div>
+</section
+{% endblock %}

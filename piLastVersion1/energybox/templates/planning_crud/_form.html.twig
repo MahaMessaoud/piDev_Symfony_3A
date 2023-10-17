@@ -1,0 +1,53 @@
+    <div class="card-body card-block">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.datePlanning,"Date :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.datePlanning, {'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.datePlanning) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.datePlanning) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.jourPlanning,"Jour :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.jourPlanning,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.jourPlanning) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.jourPlanning) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.heurePlanning,"Heure Début :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.heurePlanning,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.heurePlanning) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.heurePlanning) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    {{ form_label(form.cours,"Cours :") }}
+                </div>
+                <div class="col-12 col-md-9">
+                    {{ form_widget(form.cours,{'attr':{'class':'form-control'}})}}
+                    {% if form_errors(form.cours) is not empty %}
+                        <small class="form-text text-muted">{{ form_errors(form.cours) }}</small>
+                    {% endif %}
+                </div>
+            </div>
+            <div align="center" class="card-footer">
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_planning_crud_index') }}">Consulter Liste</a></button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+

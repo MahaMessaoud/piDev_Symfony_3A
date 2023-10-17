@@ -1,0 +1,43 @@
+    <div class="card-body card-block">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.nomCategory,"Nom :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.nomCategory,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.nomCategory) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.nomCategory) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.prioriteCategory,"Priorité :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.prioriteCategory,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.prioriteCategory) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.prioriteCategory) }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col col-md-3">
+                {{ form_label(form.descriptionCategory,"Description :") }}
+            </div>
+            <div class="col-12 col-md-9">
+                {{ form_widget(form.descriptionCategory,{'attr':{'class':'form-control'}})}}
+                {% if form_errors(form.descriptionCategory) is not empty %}
+                    <small class="form-text text-muted">{{ form_errors(form.descriptionCategory) }}</small>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div align="center" class="card-footer">
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><i class="zmdi zmdi-plus"></i>{{ button_label|default('Ajouter') }}</button>
+        <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:white;" href="{{ path('app_category_reclamation_index') }}">Retour à la liste</a></button>
+    </div>
+    {{ form_end(form) }}
+    </div>

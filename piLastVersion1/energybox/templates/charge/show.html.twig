@@ -1,0 +1,33 @@
+{%  extends 'baseBack.html.twig' %}
+
+
+{% block title %} EnergyBox | Matériaux {% endblock %}
+
+{% block body %}
+
+
+                                            <table class="table">
+                                                <tbody>
+                                                <tr>
+                                                    <th>Quantité</th>
+                                                    <td>{{ charge.quantiteCharge }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Date Arrivage</th>
+                                                    <td>{{ charge.dateArrivageCharge ? charge.dateArrivageCharge|date('Y-m-d') : '' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Fournisseur</th>
+                                                    <td>{{ charge.fournisseur }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Type Matériel</th>
+                                                    <td>{{ charge.materiel }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div align="center" class="card-footer">
+                                                <button class="au-btn au-btn-icon au-btn--green au-btn--small"><a style="color:#fff;" href="{{ path('app_charge_index') }}">Retour à la Liste</a></button>
+                                            </div>
+                                        
+{% endblock %}

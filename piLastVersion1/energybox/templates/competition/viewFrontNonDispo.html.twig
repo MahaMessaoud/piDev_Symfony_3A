@@ -1,0 +1,86 @@
+{% extends 'baseFront.html.twig' %}
+ {% block icon %}<link rel="icon" type="img/logo/LogoGymBlack.png" href="./frontOffice/img/logo/LogoGymBlack.png">{% endblock %} 
+{% block title %}EnergyBox | Competitions
+
+{% endblock %}
+
+{% block body %}
+	<!--? Hero Start -->
+		<div class="slider-area2">
+			<div class="slider-height2 d-flex align-items-center">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="hero-cap hero-cap2 pt-70 text-center">
+								<h2>Compétitions</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Hero End -->
+		<!--? Blog Area Start-->
+		<section class="services-area pt-100 pb-150">
+			<!--? Want To work -->
+			<section class="wantToWork-area w-padding">
+				<div class="container">
+					<div class="row align-items-end justify-content-between">
+						<div class="col-lg-6 col-md-10 col-sm-10">
+							<div class="section-tittle">
+								<span>Compétition Non Disponible</span>
+								<h2>Compétitions qui ont déjà dépassées</h2>
+							</div>
+						</div>
+						<div class="col-xl-2 col-lg-2 col-md-3">
+							<a href="viewFront" class="btn wantToWork-btn f-right">Liste Des Competitions</a>
+						</div>
+					</div>
+				</div>
+			</section>
+				<div class="container">
+					<div class="row">
+						{% for competition in competitions %}
+							<div class="col-lg-4 col-md-4 col-sm-6">
+								<div class="single-cat single-cat2 text-center mb-50">
+									<div class="cat-icon">
+										<i class="flaticon-fitness"></i>
+									</div>
+									<div
+										class="cat-cap">
+										{# TESSTTT AFFICHAGE #}
+										<tr></tr>
+										<tr>
+											<h5>
+												<a>
+													<td>{{ competition.nomCompetition }}</td>
+												</a>
+											</h5>
+											<b>FraisCompetition En Dinar:
+											</b>
+											<p>{{ competition.fraisCompetition }}</p>
+											<b>DateCompetition:
+											</b>
+											<p>{{ competition.dateCompetition ? competition.dateCompetition|date('Y-m-d') : '' }}</p>
+											<b>EtatCompetition:
+											</b>
+											<p>{{ competition.etatCompetition }}</p>
+											<b>NbrMaxInscrit:
+											</b>
+											<p>{{ competition.nbrMaxInscrit }}</p>
+										</tr>
+									</div>
+								</tr>
+							</div>
+						</div>
+
+
+					{% endfor %}
+                    </div>
+            <div class="col-12 d-flex justify-content-center">
+				{% do competitions.setPageRange(10) %}
+				{{knp_pagination_render(competitions, 'pagination.html.twig')}}
+			</div>
+
+		</section>
+	{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}EnergyBox | Matériel{% endblock %}
+
+{% block body %}
+
+<div class="card">
+    <div class="card-header">
+        <strong>Modifier</strong> Matériel
+    </div>
+    {{ include('materiel/_form.html.twig', {'button_label': 'Modifier'}) }}
+</div>
+
+            
+{% endblock %}
+
+
